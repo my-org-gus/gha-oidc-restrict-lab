@@ -19,9 +19,7 @@ runs:
         import base64, json, sys
         p = sys.stdin.read().strip()
         claims = json.loads(base64.urlsafe_b64decode(p + "=" * (-len(p) % 4)))
-        keys = ["sub", "actor", "actor_id", "event_name", "ref", "environment",
-                "workflow_ref", "job_workflow_ref", "repository_id"]
-        print(json.dumps({k: claims.get(k) for k in keys}, indent=2))'
+        print(json.dumps(claims, indent=2, sort_keys=True))'
 
     - name: Assume role
       uses: aws-actions/configure-aws-credentials@v6
