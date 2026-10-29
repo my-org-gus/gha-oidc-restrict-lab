@@ -1,0 +1,15 @@
+name: Deploy - Demo/Production
+
+on:
+  push:
+    branches: [spoof]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    uses: my-org-gus/gha-oidc-restrict-lab/.github/workflows/_core.yaml@main
+    permissions:
+      contents: read
+      id-token: write
